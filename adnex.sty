@@ -1,0 +1,20 @@
+\ProvidesPackage{adnex}[2026/10/14 V1.0 Micevski Adnex Operator]
+\RequirePackage{amsmath}
+\RequirePackage{centernot}
+\RequirePackage{tikz}
+
+% 1. Variable definition for single digit (Zeta-One)
+\newcommand{\zetaone}{\zeta_{\text{I}}}
+
+% 2. Linear Adnex operator (crossed plus for scalar concatenation)
+\newcommand{\adnex}{\centernot+}
+
+% 3. Wave Adnex operator (curved vinculum over grouped expression)
+\newcommand{\wadnex}[1]{%
+    \tikz[baseline=(A.base)] {
+        \node[inner sep=2pt] (A) {$#1$};
+        \draw[thick, line cap=round] 
+            (A.south west) ++(-2pt, 4pt) -- ++(3pt, -8pt) -- (A.north west) 
+            to[out=15,in=165] (A.north east);
+    }%
+}
